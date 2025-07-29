@@ -12,7 +12,7 @@ const Navbar = () => {
 
 
     const handleSignOut = async () => {
-        // await axios.post('https://leaflight-server.vercel.app/logout', {}, {
+        // await axios.post('https://localhost:5000/logout', {}, {
         //     withCredentials: true
         // })
         SignOutUser(auth)
