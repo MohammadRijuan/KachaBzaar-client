@@ -17,6 +17,8 @@ import ProductDetails from "../pages/ProductDetails";
 import AddAdvertisement from "../Dashboard/Vendor/AddAdvertisement";
 import MyAdvertisements from "../Dashboard/Vendor/MyAdvertisement";
 import AllAdvertisements from "../Dashboard/Admin/AllAdvertisements";
+import PrivateRoute from "./PrivateRoute";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
   {
@@ -29,7 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        Component:ProductDetails
+        element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
       }
 
 
@@ -52,15 +54,15 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <DashboardLayout></DashboardLayout>,
+    element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
     children: [{
       index: true,
       path: 'all-users',
-      Component: AllUsers
+      element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
     },
     {
       path: 'pending-vendor',
-      Component: PendingVendors,
+      element:<AdminRoute><PendingVendors></PendingVendors></AdminRoute>,
     },
     {
       path: 'add-product',
