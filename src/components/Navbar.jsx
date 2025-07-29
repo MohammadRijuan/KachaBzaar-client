@@ -45,7 +45,6 @@ const Navbar = () => {
                         <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/dashboard'>Dashboard</NavLink>
                     </>
                 }
-                <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/about'>About Us</NavLink>
             </div>
 
             <div className="navbar-end">

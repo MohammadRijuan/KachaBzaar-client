@@ -33,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: "/product/:id",
         element:<PrivateRoute><ProductDetails></ProductDetails></PrivateRoute>
+      },
+      {
+        path:'be-vendor',
+        element:<PrivateRoute><BeVendor></BeVendor></PrivateRoute>
       }
 
 
