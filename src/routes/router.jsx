@@ -19,6 +19,7 @@ import MyAdvertisements from "../Dashboard/Vendor/MyAdvertisement";
 import AllAdvertisements from "../Dashboard/Admin/AllAdvertisements";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
+import VendorRoute from "./VendorRoute";
 
 export const router = createBrowserRouter([
   {
@@ -66,7 +67,7 @@ export const router = createBrowserRouter([
     },
     {
       path: 'add-product',
-      Component: AddProduct
+      element: <VendorRoute><AddProduct></AddProduct></VendorRoute>
     },
     {
       path: 'my-product',
