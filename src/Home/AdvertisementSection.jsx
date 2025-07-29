@@ -7,7 +7,7 @@ const AdvertisementSection = () => {
   const { data: ads = [], isLoading } = useQuery({
     queryKey: ["approvedAds"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/advertisements/approved");
+      const res = await axios.get("https://kacha-bazaar-server.vercel.app/advertisements/approved");
       return res.data;
     },
   });

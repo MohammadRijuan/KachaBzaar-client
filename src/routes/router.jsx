@@ -5,7 +5,7 @@ import AuthLayout from "../layouts/AuthLayout";
 import Register from "../Authentication/Register";
 import Login from "../Authentication/Login";
 import Home from "../Home/Home";
-import AllProduct from "../pages/AllProduct";
+
 import DashboardLayout from "../layouts/DashboardLayout";
 import AllUsers from "../Dashboard/Admin/Allusers";
 import BeVendor from "../pages/BeVendor";
@@ -20,6 +20,7 @@ import AllAdvertisements from "../Dashboard/Admin/AllAdvertisements";
 import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import VendorRoute from "./VendorRoute";
+import AllProduct from "../pages/AllProduct";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         Component: Home,
+      },
+      {
+        path:'all-product',
+        Component:AllProduct
       },
       {
         path: "/product/:id",

@@ -37,7 +37,7 @@ const Navbar = () => {
             </div>
             <div className="navbar-center space-x-8 text-gray-400 font-bold hidden lg:block">
                 <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/'>Home</NavLink>
-                <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/all-products'>All Products</NavLink>
+                <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/all-product'>All Products</NavLink>
 
                 {
                     user && <>
@@ -70,7 +70,7 @@ const Navbar = () => {
                         tabIndex={0}
                         className="menu menu-sm right-0 dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         <li><NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/'>Home</NavLink></li>
-                        <li><NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/products'>All Products</NavLink></li>
+                        <li><NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/all-product'>All Products</NavLink></li>
                         {
                             user && <>
 
@@ -78,7 +78,7 @@ const Navbar = () => {
                                 <li><NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/dashboard'>Dashboard</NavLink></li>
                             </>
                         }
-                        <li><NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/about'>About Us</NavLink></li>
+
                         {user ? (
                             <>
                                 <span><img className='w-10 h-10 mx-auto rounded-full  object-cover' src={user?.photoURL || '/avatar.jpg'} alt="" /></span>

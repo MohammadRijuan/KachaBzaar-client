@@ -13,7 +13,7 @@ const ProductDetails = () => {
   const { data: product, isLoading, isError } = useQuery({
     queryKey: ["product", id],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/products/${id}`);
+      const res = await axios.get(`https://kacha-bazaar-server.vercel.app/products/${id}`);
       return res.data;
     },
   });
@@ -30,7 +30,7 @@ const ProductDetails = () => {
     };
 
     try {
-      await axios.post("http://localhost:5000/cart", cartItem);
+      await axios.post("https://kacha-bazaar-server.vercel.app/cart", cartItem);
       Swal.fire("Added!", "Product added to cart", "success");
     } catch (error) {
       Swal.fire("Error", "Failed to add to cart", "error");
