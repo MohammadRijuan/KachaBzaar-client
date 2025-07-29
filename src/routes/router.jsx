@@ -71,23 +71,23 @@ export const router = createBrowserRouter([
     },
     {
       path: 'my-product',
-      Component: MyProduct
+      element: <VendorRoute><MyProduct></MyProduct></VendorRoute>
     },
     {
       path: 'all-products',
-      Component: AllProducts
+      element: <AdminRoute><AllProducts></AllProducts></AdminRoute>
     },
     {
       path:'add-advertisement',
-      Component: AddAdvertisement
+      element: <AdminRoute><AddAdvertisement></AddAdvertisement></AdminRoute>
     },
     {
       path:'my-advertisement',
-      Component: MyAdvertisements
+      element: <AdminRoute><MyAdvertisements></MyAdvertisements></AdminRoute>
     },
     {
       path:'all-adds',
-      Component: AllAdvertisements
+      element: <AdminRoute><AllAdvertisements></AllAdvertisements></AdminRoute>
     }
     ]
   }
