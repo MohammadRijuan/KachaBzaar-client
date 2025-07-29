@@ -34,6 +34,7 @@ const Navbar = () => {
             <div className="navbar-start">
 
                 <NavLink to='/'><img className='w-[80px] h-[60px]' src='/logo-k.png' alt="" /></NavLink>
+                <NavLink to='/'><h1 className='font-bold text-xl text-green-800'>KachaBazaar</h1></NavLink>
             </div>
             <div className="navbar-center space-x-8 text-gray-400 font-bold hidden lg:block">
                 <NavLink className='p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]' to='/'>Home</NavLink>
