@@ -16,7 +16,7 @@ const Banner = () => {
           
         </div>
         <div>
-          <img src="https://via.placeholder.com/600x300?text=Slide+2" alt="Slide 2" />
+          <img src="/ban-2.png" alt="Slide 2" />
          
         </div>
         <div>

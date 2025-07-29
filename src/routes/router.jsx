@@ -70,6 +70,15 @@ export const router = createBrowserRouter([
       element:<AdminRoute><PendingVendors></PendingVendors></AdminRoute>,
     },
     {
+      path:'all-adds',
+      element: <AdminRoute><AllAdvertisements></AllAdvertisements></AdminRoute>
+    },
+    {
+      path: 'all-products',
+      element: <AdminRoute><AllProducts></AllProducts></AdminRoute>
+    },
+    //vendor route
+    {
       path: 'add-product',
       element: <VendorRoute><AddProduct></AddProduct></VendorRoute>
     },
@@ -77,22 +86,16 @@ export const router = createBrowserRouter([
       path: 'my-product',
       element: <VendorRoute><MyProduct></MyProduct></VendorRoute>
     },
-    {
-      path: 'all-products',
-      element: <AdminRoute><AllProducts></AllProducts></AdminRoute>
-    },
+  
     {
       path:'add-advertisement',
-      element: <AdminRoute><AddAdvertisement></AddAdvertisement></AdminRoute>
+      element: <VendorRoute><AddAdvertisement></AddAdvertisement></VendorRoute>
     },
     {
       path:'my-advertisement',
-      element: <AdminRoute><MyAdvertisements></MyAdvertisements></AdminRoute>
+      element: <VendorRoute><MyAdvertisements></MyAdvertisements></VendorRoute>
     },
-    {
-      path:'all-adds',
-      element: <AdminRoute><AllAdvertisements></AllAdvertisements></AdminRoute>
-    }
+    
     ]
   }
 ])
