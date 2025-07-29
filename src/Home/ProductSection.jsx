@@ -22,11 +22,13 @@ const ProductSection = () => {
     if (isError) return <p className="text-center text-red-500">Failed to load products.</p>;
     if (products.length === 0) return <p className="text-center">No approved products yet.</p>;
 
+    const sliceProduct = products.slice(0,6)
+
     return (
         <div className="p-6">
             <h2 className="text-2xl font-bold mb-4">Market Products</h2>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-                {products.map((p) => (
+                {sliceProduct.map((p) => (
                     <div key={p._id} className="card bg-base-100 shadow-md p-4">
                         <img
                             src={p.image}

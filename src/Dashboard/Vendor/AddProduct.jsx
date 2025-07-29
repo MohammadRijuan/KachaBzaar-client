@@ -35,7 +35,7 @@ const AddProduct = () => {
     onSuccess: () => {
       Swal.fire("Success", "Product submitted for review!", "success");
       reset();
-      navigate('/')
+      navigate('/dashboard/my-product')
     }
   });
 
