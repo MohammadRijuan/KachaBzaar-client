@@ -3,6 +3,7 @@ import Banner from './Banner';
 import ProductSection from './ProductSection';
 import AdvertisementSection from './AdvertisementSection';
 import CountUpSection from './CountUpSection';
+import MapSection from './MapSection';
 
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
             <Banner></Banner>
             <ProductSection></ProductSection>
             <AdvertisementSection></AdvertisementSection>
+            <MapSection></MapSection>
             <CountUpSection></CountUpSection>
         </div>
     );

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import { Link, useLocation, useNavigate } from 'react-router'; 
+import { Link, NavLink, useLocation, useNavigate } from 'react-router'; 
 import useAuth from '../hooks/useAuth';
 import SocialLogin from './SocialLogin';
-
 
 const Login = () => {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -22,12 +21,19 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-lime-200 py-10">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md space-y-6">
-        <h2 className="text-3xl font-bold text-center text-green-700">Welcome Back</h2>
+    <div className="min-h-screen flex items-center justify-center py-6 px-4 sm:px-6 lg:px-8">
+      
+      <div className="bg-white rounded-2xl bg-gradient-to-br from-green-100 to-lime-200 shadow-xl p-6 sm:p-8 md:p-10 w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-6">
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-          {/* Email */}
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-700">
+          Welcome Back
+        </h2>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
+          
+          {/* Email Field */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Email</label>
             <input
@@ -39,7 +45,7 @@ const Login = () => {
             {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
           </div>
 
-          {/* Password */}
+          {/* Password Field */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Password</label>
             <input
@@ -56,12 +62,12 @@ const Login = () => {
             )}
           </div>
 
-          {/* Forgot password link */}
+          {/* Forgot Password Link */}
           <div className="text-sm text-right">
             <a href="#" className="text-green-600 hover:underline">Forgot password?</a>
           </div>
 
-          {/* Submit */}
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition"
@@ -70,14 +76,19 @@ const Login = () => {
           </button>
         </form>
 
+        {/* Register Redirect */}
         <div className="text-center text-sm text-gray-600">
           New to this website?{' '}
-          <Link state={{ from }} to="/register" className="text-green-600 hover:underline">Register</Link>
+          <Link state={{ from }} to="/register" className="text-green-600 hover:underline">
+            Register
+          </Link>
         </div>
 
+        {/* Social Login */}
         <div className="pt-4 border-t">
           <SocialLogin />
         </div>
+
       </div>
     </div>
   );

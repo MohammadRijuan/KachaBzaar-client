@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useLocation, useNavigate } from 'react-router';
-
 import axios from 'axios';
 import useAuth from '../hooks/useAuth';
 import useAxios from '../hooks/useAxios';
@@ -16,30 +15,28 @@ const Register = () => {
   const navigate = useNavigate();
   const from = location.state?.from || '/';
 
-  const onSubmit = data => {
-    createUser(data.email, data.password)
-      .then(async (result) => {
-        console.log(result.user);
-        // Store in MongoDB
-        const userInfo = {
-          email: data.email,
-          role: 'user',
-          created_at: new Date().toISOString(),
-          last_log_in: new Date().toISOString()
-        };
-        await axiosInstance.post('/users', userInfo);
+  const onSubmit = async (data) => {
+    try {
+      const result = await createUser(data.email, data.password);
+      console.log(result.user);
 
-        // Firebase user profile update
-        const userProfile = {
-          displayName: data.name,
-          photoURL: profilePic
-        };
-        await updateUser(userProfile);
-        navigate(from);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+      const userInfo = {
+        email: data.email,
+        role: 'user',
+        created_at: new Date().toISOString(),
+        last_log_in: new Date().toISOString()
+      };
+      await axiosInstance.post('/users', userInfo);
+
+      const userProfile = {
+        displayName: data.name,
+        photoURL: profilePic
+      };
+      await updateUser(userProfile);
+      navigate(from);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleImageUpload = async (e) => {
@@ -50,7 +47,6 @@ const Register = () => {
     const uploadUrl = `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_image_upload_key}`;
     try {
       const res = await axios.post(uploadUrl, formData);
-      console.log(res.data)
       setProfilePic(res.data.data.url);
     } catch (err) {
       console.error('Image upload failed:', err);
@@ -58,11 +54,17 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 to-lime-200 py-10">
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md space-y-6">
-        <h2 className="text-3xl font-bold text-center text-green-700">Create Your Account</h2>
+    <div className="min-h-screen flex items-center justify-center  py-6 px-4 sm:px-6 lg:px-8">
+      <div className="bg-white rounded-2xl shadow-xl p-6 bg-gradient-to-br from-green-100 to-lime-200 sm:p-8 md:p-10 w-full max-w-sm sm:max-w-md lg:max-w-lg space-y-6">
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        {/* Heading */}
+        <h2 className="text-2xl sm:text-3xl font-bold text-center text-green-700">
+          Create Your Account
+        </h2>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 sm:space-y-5">
+
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700">Full Name</label>
@@ -84,7 +86,11 @@ const Register = () => {
               className="w-full mt-1 file-input file-input-bordered file-input-sm"
             />
             {profilePic && (
-              <img src={profilePic} alt="Preview" className="w-20 h-20 mt-2 rounded-full border object-cover" />
+              <img
+                src={profilePic}
+                alt="Preview"
+                className="w-16 h-16 sm:w-20 sm:h-20 mt-3 rounded-full border object-cover"
+              />
             )}
           </div>
 
@@ -115,17 +121,22 @@ const Register = () => {
             )}
           </div>
 
-          {/* Submit */}
-          <button type="submit" className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition">
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-semibold py-2 rounded-md transition"
+          >
             Register
           </button>
         </form>
 
+        {/* Login Link */}
         <div className="text-center text-sm text-gray-600">
           Already have an account?{' '}
           <Link to="/login" className="text-green-600 hover:underline">Login</Link>
         </div>
 
+        {/* Social Login */}
         <div className="pt-4 border-t">
           <SocialLogin />
         </div>

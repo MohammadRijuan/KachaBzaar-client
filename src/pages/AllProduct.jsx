@@ -10,7 +10,7 @@ const AllProduct = () =>  {
     const { data: productsData, isLoading, isError } = useQuery({
         queryKey: ["approvedProducts"],
         queryFn: async () => {
-            const res = await axios.get("http://localhost:5000/approved-products");
+            const res = await axios.get("https://kacha-bazaar-server.vercel.app/approved-products");
             console.log("Approved products response:", res.data);
             return res.data;
         },
