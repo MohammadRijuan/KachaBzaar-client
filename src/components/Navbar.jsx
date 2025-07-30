@@ -89,7 +89,7 @@ const Navbar = () => {
                         ) : (
                             <>
                                 <li><NavLink to="/login" className="p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]">Login</NavLink></li>
-                                <li><NavLink to="p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]" className="btn">Register</NavLink></li>
+                                <li><NavLink to="/register" className="p-3 rounded text-green-600 hover:text-white hover:bg-[#4CAF50]">Register</NavLink></li>
                             </>
                         )}
                     </ul>

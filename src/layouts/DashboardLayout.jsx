@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, Outlet } from 'react-router';
 import {
   LayoutDashboard, ClipboardList, ShoppingCart, PlusCircle,
-  Eye, Megaphone, Users, Boxes
+  Eye, Megaphone, Users, Boxes, Menu
 } from 'lucide-react';
 import useAuth from '../hooks/useAuth';
 import Footer from '../components/Footer';
@@ -11,6 +11,7 @@ import useUserRole from '../hooks/useUserRole';
 const DashboardLayout = () => {
   const { user } = useAuth();
   const { role, roleLoading } = useUserRole();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   if (roleLoading) {
     return <div className="min-h-screen flex items-center justify-center text-xl">Loading...</div>;
@@ -18,19 +19,32 @@ const DashboardLayout = () => {
 
   return (
     <div>
-      <div className="min-h-screen flex bg-gray-100">
+      <div className="min-h-screen flex flex-col lg:flex-row bg-gray-100">
+
+        {/* Mobile Header with Menu Button */}
+        <div className="lg:hidden flex justify-between items-center bg-white shadow px-4 py-3">
+          <h2 className="text-lg font-semibold text-gray-800">Dashboard</h2>
+          <button
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="text-gray-600 hover:text-green-600"
+          >
+            <Menu />
+          </button>
+        </div>
+
         {/* Sidebar */}
-        <aside className="w-72 bg-white shadow-md hidden lg:flex flex-col p-6 space-y-5">
+        <aside className={`w-72 bg-white shadow-md p-6 space-y-5 z-30 fixed top-0 bottom-0 left-0 transform transition-transform duration-300 ease-in-out 
+          ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 lg:static lg:flex flex-col`}>
+
           <Link to="/" className="text-2xl font-bold text-green-600 flex items-center gap-2">
             <LayoutDashboard /> KachaBazaar
           </Link>
 
-          <nav className="flex flex-col gap-4 text-gray-700">
+          <nav className="flex flex-col gap-4 text-gray-700 mt-6">
             {/* User Panel */}
             {(role === 'user') && (
               <>
                 <span className="text-xs font-semibold text-gray-400 uppercase">User Panel</span>
-
                 <Link to="/dashboard/my-orders" className="hover:text-green-600 flex items-center gap-2">
                   <ShoppingCart size={18} /> My Orders
                 </Link>
@@ -44,7 +58,6 @@ const DashboardLayout = () => {
             {role === 'vendor' && (
               <>
                 <span className="text-xs font-semibold text-gray-400 uppercase">Vendor Panel</span>
-
                 <Link to="/dashboard/add-product" className="hover:text-green-600 flex items-center gap-2">
                   <PlusCircle size={18} /> Add Product
                 </Link>
@@ -64,7 +77,6 @@ const DashboardLayout = () => {
             {role === 'admin' && (
               <>
                 <span className="text-xs font-semibold text-gray-400 uppercase">Admin Panel</span>
-
                 <Link to="/dashboard/all-users" className="hover:text-green-600 flex items-center gap-2">
                   <Users size={18} /> All Users
                 </Link>
@@ -85,9 +97,10 @@ const DashboardLayout = () => {
           </nav>
         </aside>
 
-        {/* Main Content */}
+        {/* Main Content Area */}
         <div className="flex-1 flex flex-col">
-          <header className="bg-white shadow px-6 py-4 flex items-center justify-between">
+          {/* Desktop Header */}
+          <header className="hidden lg:flex bg-white shadow px-6 py-4 items-center justify-between">
             <h2 className="text-xl font-semibold text-gray-800">Dashboard</h2>
             <div className="flex items-center gap-4">
               <img
@@ -101,7 +114,8 @@ const DashboardLayout = () => {
             </div>
           </header>
 
-          <main className="flex-1 p-6">
+          {/* Page Outlet */}
+          <main className="flex-1 p-4 sm:p-6">
             <Outlet />
           </main>
         </div>
