@@ -7,7 +7,7 @@ import { useNavigate } from "react-router";
 
 
 const AddAdvertisement = ({ existingAd, closeModal }) => {
-    const  navigate = useNavigate()
+  const navigate = useNavigate()
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const queryClient = useQueryClient();
@@ -31,9 +31,11 @@ const AddAdvertisement = ({ existingAd, closeModal }) => {
       };
 
       if (existingAd) {
-        const res = await axiosSecure.patch(`/advertisements/${existingAd._id}`, adData);
+        const { _id, ...adDataToUpdate } = adData;
+        const res = await axiosSecure.patch(`/advertisements/${existingAd._id}`, adDataToUpdate);
         return res.data;
-      } else {
+      }
+      else {
         const res = await axiosSecure.post("/advertisements", adData);
         return res.data;
       }

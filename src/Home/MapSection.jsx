@@ -24,7 +24,7 @@ const MapSection = () => {
       viewport={{ once: true, amount: 0.2 }}
       className="w-full bg-white rounded-lg shadow-md p-6 mt-10"
     >
-      <h2 className="text-3xl font-bold text-green-700 mb-8">📍 Our Location</h2>
+      <h2 className="text-3xl font-bold text-center text-green-700 mb-8">📍 Our Location</h2>
 
       <div className="flex flex-col lg:flex-row gap-6">
         {/* Left Content */}

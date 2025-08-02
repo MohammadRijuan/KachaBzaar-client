@@ -26,8 +26,8 @@ const ProductSection = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-3xl text-green-800 font-bold mb-4">Market Products</h2>
-            <p className='font-bold text-gray-400 mb-4'>Discover Your All Needs At Our Site Through Exploring Products</p>
+            <h2 className="text-3xl text-green-800 text-center font-bold mb-4">Market Products</h2>
+            <p className='font-bold text-gray-400 text-center mb-4'>Discover Your All Needs At Our Site Through Exploring Products</p>
             <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {sliceProduct.map((p) => (
                     <div key={p._id} className="card bg-base-100 shadow-md p-4">

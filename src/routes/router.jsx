@@ -21,6 +21,7 @@ import PrivateRoute from "./PrivateRoute";
 import AdminRoute from "./AdminRoute";
 import VendorRoute from "./VendorRoute";
 import AllProduct from "../pages/AllProduct";
+import MyWatchlist from "../Dashboard/User/MyWatchlist";
 
 export const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
       index: true,
       path: 'all-users',
       element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
+    },
+    {
+      path:'watchlist',
+      Component: MyWatchlist,
     },
     {
       path: 'pending-vendor',

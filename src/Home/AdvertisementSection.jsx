@@ -17,7 +17,7 @@ const AdvertisementSection = () => {
 
   return (
     <section className="max-w-6xl mx-auto py-10">
-        <h1 className="text-green-800 font-bold text-3xl mb-8">Our Advertisements</h1>
+        <h1 className="text-green-800 text-center font-bold text-3xl mb-8">Our Advertisements</h1>
       <Carousel
         autoPlay
         infiniteLoop
